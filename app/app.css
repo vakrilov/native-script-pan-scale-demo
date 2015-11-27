@@ -1,0 +1,13 @@
+﻿#item, .item {
+    vertical-align: top;
+    horizontal-align: left;
+}
+
+
+#status {
+    vertical-align: bottom;
+    horizontal-align: left;
+    margin-left: 5;
+    margin-bottom: 5;
+    background-color: lightblue;
+}

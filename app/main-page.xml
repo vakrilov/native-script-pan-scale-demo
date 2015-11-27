@@ -1,0 +1,6 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+  <GridLayout pan="onPan" pinch="onPinch" doubleTap="onDoubleTap">
+    <Image src="~/image.jpg" stretch="aspectFit" id="item" width="300" height="400" backgroundColor="Green"/>
+    <TextView id="status" editable="false"/>
+  </GridLayout>
+</Page>
