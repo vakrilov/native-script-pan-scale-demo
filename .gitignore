@@ -1,2 +1,8 @@
+.DC_Store
 /node_modules/
 /platforms/
+/hooks/
+/lib/
+
+**/*.js
+**/*.js.map
