@@ -52,14 +52,14 @@ export function onPinch(args: PinchGestureEventData) {
         const newOriginX = args.getFocusX() - item.translateX;
         const newOriginY = args.getFocusY() - item.translateY;
 
-        const oldOriginX = item.originX * item.width;
-        const oldOriginY = item.originY * item.height;
+        const oldOriginX = item.originX * item.getMeasuredWidth();
+        const oldOriginY = item.originY * item.getMeasuredHeight();
 
         item.translateX += (oldOriginX - newOriginX) * (1 - item.scaleX);
         item.translateY += (oldOriginY - newOriginY) * (1 - item.scaleY);
 
-        item.originX = newOriginX / item.width;
-        item.originY = newOriginY / item.height;
+        item.originX = newOriginX / item.getMeasuredWidth();
+        item.originY = newOriginY / item.getMeasuredHeight();
 
         startScale = item.scaleX;
     }
@@ -94,7 +94,7 @@ export function onDoubleTap(args: GestureEventData) {
 function updateStatus() {
     const text = "translate: [" + Math.round(item.translateX) + ", " + Math.round(item.translateY) + "]" +
         "\nscale: [" + (Math.round(item.scaleX * 100) / 100) + ", " + (Math.round(item.scaleY * 100) / 100) + "]" +
-        "\norigin: [" + Math.round(item.originX * item.width) + ", " + Math.round(item.originY * item.height) + "]";
+        "\norigin: [" + Math.round(item.originX * item.getMeasuredWidth()) + ", " + Math.round(item.originY * item.getMeasuredHeight()) + "]";
 
     statusLbl.text = text;
 }
