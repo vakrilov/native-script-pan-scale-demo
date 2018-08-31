@@ -2,6 +2,7 @@ import * as utils from "utils/utils";
 import {Label} from "ui/label";
 import {View} from "ui/core/view";
 import {GestureEventData, PanGestureEventData, PinchGestureEventData} from "ui/gestures";
+import { layout } from 'utils/utils';
 
 let states = ["unknown", "start", "change", "end"];
 
@@ -52,14 +53,14 @@ export function onPinch(args: PinchGestureEventData) {
         const newOriginX = args.getFocusX() - item.translateX;
         const newOriginY = args.getFocusY() - item.translateY;
 
-        const oldOriginX = item.originX * item.getMeasuredWidth();
-        const oldOriginY = item.originY * item.getMeasuredHeight();
+        const oldOriginX = item.originX * layout.toDeviceIndependentPixels(item.getMeasuredWidth());
+        const oldOriginY = item.originY * layout.toDeviceIndependentPixels(item.getMeasuredHeight());
 
         item.translateX += (oldOriginX - newOriginX) * (1 - item.scaleX);
         item.translateY += (oldOriginY - newOriginY) * (1 - item.scaleY);
 
-        item.originX = newOriginX / item.getMeasuredWidth();
-        item.originY = newOriginY / item.getMeasuredHeight();
+        item.originX = newOriginX / layout.toDeviceIndependentPixels(item.getMeasuredWidth());
+        item.originY = newOriginY / layout.toDeviceIndependentPixels(item.getMeasuredHeight());
 
         startScale = item.scaleX;
     }
